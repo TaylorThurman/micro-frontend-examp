@@ -5,6 +5,7 @@ import "./index.scss";
 import Header from "./Header";
 import Footer from "./Footer";
 import HomeContent from "./HomeContent";
+import "remixicon/fonts/remixicon.css";
 
 const App = () => (
     <div className="text-3xl mx-auto max-w-6xl">
