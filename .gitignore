@@ -1,0 +1,7 @@
+.idea
+home/node_modules
+home/dist
+pdp/node_modules
+pdp/dist
+server/node_modules
+server/dist
