@@ -5,3 +5,5 @@ pdp/node_modules
 pdp/dist
 server/node_modules
 server/dist
+cart/node_modules
+cart/dist
