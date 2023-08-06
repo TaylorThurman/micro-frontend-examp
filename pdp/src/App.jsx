@@ -7,7 +7,7 @@ import Header from "home/Header";
 import Footer from "home/Footer";
 import SafeComponent from "./SafeComponent";
 import PDPContent from "./PDPContent";
-import {BrowserRouter, Route, Router, RouterProvider, Routes} from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import "remixicon/fonts/remixicon.css";
 
 const App = () => (

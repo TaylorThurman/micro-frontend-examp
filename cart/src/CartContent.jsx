@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 
-import { cart, clearCart } from "cart/cart";
-import { currency } from "home/products";
+import {cart, clearCart} from "cart/cart";
+import {currency} from "home/products";
 
 export default function CartContent() {
     const [items, setItems] = useState([]);
 
-    useEffect(
-        () => cart.subscribe((value) => setItems(value?.cartItems ?? [])),
+    useEffect(() => {
+            const subscription = cart.subscribe((value) => setItems(value?.cartItems ?? []))
+            return () => subscription.unsubscribe();
+        },
         []
     );
 
@@ -17,7 +19,7 @@ export default function CartContent() {
                 {items.map((item) => (
                     <React.Fragment key={item.id}>
                         <div>{item.quantity}</div>
-                        <img src={item.image} alt={item.name} className="max-h-6" />
+                        <img src={item.image} alt={item.name} className="max-h-6"/>
                         <div>{item.name}</div>
                         <div className="text-right">
                             {currency.format(item.quantity * item.price)}

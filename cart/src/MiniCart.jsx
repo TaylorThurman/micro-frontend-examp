@@ -8,11 +8,11 @@ export default function MiniCart() {
     const [showCart, setShowCart] = useState(false);
 
     useEffect(() => {
-        console.log(cart)
         setItems(cart.value?.cartItems);
-        return cart.subscribe((c) => {
+        const subscription =  cart.subscribe((c) => {
             setItems(c?.cartItems);
         });
+        return () => subscription.unsubscribe();
     }, []);
 
     if (!items) return null;

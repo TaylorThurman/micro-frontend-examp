@@ -13,8 +13,8 @@ export const getCart = () => fetch(`${API_SERVER}/cart`, {
 })
     .then((res) => res.json())
     .then((res) => {
+        console.log("got cart", res)
         cart.next(res);
-        console.log(cart)
         return res;
     });
 
@@ -25,7 +25,11 @@ export const addToCart = (id) => fetch(`${API_SERVER}/cart`, {
 })
     .then((res) => res.json())
     .then(() => {
+        console.log("added to cart");
         getCart();
+    })
+    .catch((err) => {
+        console.error(err);
     });
 
 export const clearCart = () => fetch(`${API_SERVER}/cart`, {
@@ -56,9 +60,10 @@ export function useLoggedIn() {
     const [loggedIn, setLoggedIn] = useState(!!jwt.value);
     useEffect(() => {
         setLoggedIn(!!jwt.value);
-        return jwt.subscribe((c) => {
+        const subscription = jwt.subscribe((c) => {
             setLoggedIn(!!jwt.value);
         });
+        return () => subscription.unsubscribe();
     }, []);
     return loggedIn;
 }
