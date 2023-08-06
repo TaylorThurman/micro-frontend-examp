@@ -13,7 +13,6 @@ export const getCart = () => fetch(`${API_SERVER}/cart`, {
 })
     .then((res) => res.json())
     .then((res) => {
-        console.log("got cart", res)
         cart.next(res);
         return res;
     });
@@ -25,7 +24,6 @@ export const addToCart = (id) => fetch(`${API_SERVER}/cart`, {
 })
     .then((res) => res.json())
     .then(() => {
-        console.log("added to cart");
         getCart();
     })
     .catch((err) => {
