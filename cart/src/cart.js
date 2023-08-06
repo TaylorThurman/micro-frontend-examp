@@ -14,6 +14,7 @@ export const getCart = () => fetch(`${API_SERVER}/cart`, {
     .then((res) => res.json())
     .then((res) => {
         cart.next(res);
+        console.log(cart)
         return res;
     });
 
